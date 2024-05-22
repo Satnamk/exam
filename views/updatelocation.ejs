@@ -10,23 +10,19 @@
     <div class="update">
       <h2>Update Location</h2>
       <form action="/single-location/<%= location._id %>?_method=PUT" method="POST">
-        <label>Title:</label>
-        <input type="text" value="<%= location.title %>" id="title" name="title" required />
+        <label>Name:</label>
+        <input type="text" value="<%= location.name %>" id="name" name="name" required />
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" required><%= location.description %></textarea>
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" rows="4" required><%= location.address %></textarea>
 
-        <label for="targetDate">Target Date:</label>
-        <input type="date" id="targetDate" name="targetDate" required value="<%= location.targetDate.toISOString().substr(0, 10) %>" />
+        <label>Latitude:</label>
+        <input type="number" value="<%= location.latitude %>" id="latitude" name="latitude" required />
 
-        <label>Author:</label>
-        <select name="author">
-          <option value="sami">Sami</option>
-          <option value="rami">Rami</option>
-        </select>
+        <label>Longitude:</label>
+        <input type="number" value="<%= location.longitude %>" id="longitude" name="longitude" required />
 
-        <label for="achieved">Achieved:</label>
-        <input type="checkbox" id="achieved" name="achieved" <% if (location.achieved) { %>checked<% } %> />
+       
 
         <button type="submit">Update Location</button>
       </form>

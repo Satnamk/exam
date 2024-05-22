@@ -2,20 +2,20 @@
 <% function renderLocation(location) { %>
   <div class="item-details">
     <article>
-      <h2>Title: <%= location.title %></h2>
-      <div><%= location.description %></div>
+      <h2>Title: <%= location.name %></h2>
+      <div>Address: <%= location.address %></div>
       <p>
-        <strong>Target Date:</strong> <%= formatDate(location.targetDate) %><br />
-        <strong>Achieved:</strong> <%= location.achieved %>
+        <strong>Latitude:</strong> <%= location.latitude %><br />
+        <strong>Longitude:</strong> <%= location.longitude %>
       </p>
-  
+  <br>
       <!-- Update button -->
       <form
         class="action-form"
         method="GET"
         action="/single-location/update/<%= location._id %>"
       >
-        <button type="submit" class="update">update</button>
+        <button type="submit" class="update">Update</button><br>
       </form>
   
       <!-- Delete button -->
@@ -24,7 +24,7 @@
         method="POST"
         action="/single-location/<%= location._id %>?_method=DELETE"
       >
-        <button type="submit">delete</button>
+        <button type="submit">Delete</button>
       </form>
     </article>
   </div>

@@ -40,11 +40,11 @@ const renderForm = (req, res) => {
 // Controller function to handle adding a new location (used for rendering and API)
 const addLocation = async (req, res) => {
   try {
-    const { title, description, targetDate } = req.body;
+    const { name, address, latitude, longitude } = req.body;
     const user_id = req.user._id;
     // Convert the achieved field to a Boolean
-    const achieved = req.body.achieved === "on";
-    const newLocation = new Location({ title, description, targetDate, achieved,user_id });
+    //const achieved = req.body.achieved === "on";
+    const newLocation = new Location({ name, address, latitude, longitude, user_id });
     await newLocation.save();
     // Redirect to the main page after successfully adding the location
     console.log("Location added successfully");
@@ -99,9 +99,9 @@ const updateLocation = async (req, res) => {
   try {
     const { id } = req.params;
     const user_id = req.user._id;
-    const achieved = req.body.achieved === "on";
-    const { title, description, targetDate } = req.body;
-    const updatedLocationData = { title, description, targetDate, achieved };
+    //const achieved = req.body.achieved === "on";
+    const { name, address, latitude, longitude } = req.body;
+    const updatedLocationData = { name, address, latitude, longitude };
 
     // Update the location with the new data
     const updatedLocation = await Location.findOneAndUpdate({ _id: id, user_id: user_id }, updatedLocationData, { new: true });
